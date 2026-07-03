@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         #if targetEnvironment(simulator)
         // Audio extension hack to access pasteboard doesn't work in simulator, so for testing just start background task.
-        RSTBeginBackgroundTask("com.rileytestut.Clip.simulatorBackgroundTask")
+        RSTBeginBackgroundTask("com.slyboots.Clip.simulatorBackgroundTask")
         #endif
         
         DatabaseManager.shared.purge()

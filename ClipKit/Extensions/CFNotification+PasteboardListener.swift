@@ -10,7 +10,7 @@ import CoreFoundation
 
 public extension CFNotificationName
 {
-    static let didChangePasteboard: CFNotificationName = CFNotificationName("com.rileytestut.Clip.DidChangePasteboard" as CFString)
+    static let didChangePasteboard: CFNotificationName = CFNotificationName("com.slyboots.Clip.DidChangePasteboard" as CFString)
     
-    static let ignoreNextPasteboardChange: CFNotificationName = CFNotificationName("com.rileytestut.Clip.IgnoreNextPasteboardChange" as CFString)
+    static let ignoreNextPasteboardChange: CFNotificationName = CFNotificationName("com.slyboots.Clip.IgnoreNextPasteboardChange" as CFString)
 }
