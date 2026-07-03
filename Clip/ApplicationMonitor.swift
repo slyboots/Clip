@@ -13,13 +13,13 @@ import Combine
 
 private enum UserNotification: String
 {
-    case appStoppedRunning = "com.rileytestut.Clip.AppStoppedRunning"
+    case appStoppedRunning = "com.slyboots.Clip.AppStoppedRunning"
 }
 
 private extension CFNotificationName
 {
-    static let altstoreRequestAppState: CFNotificationName = CFNotificationName("com.altstore.RequestAppState.com.rileytestut.Clip" as CFString)
-    static let altstoreAppIsRunning: CFNotificationName = CFNotificationName("com.altstore.AppState.Running.com.rileytestut.Clip" as CFString)
+    static let altstoreRequestAppState: CFNotificationName = CFNotificationName("com.altstore.RequestAppState.com.slyboots.Clip" as CFString)
+    static let altstoreAppIsRunning: CFNotificationName = CFNotificationName("com.altstore.AppState.Running.com.slyboots.Clip" as CFString)
 }
 
 private let ReceivedApplicationState: @convention(c) (CFNotificationCenter?, UnsafeMutableRawPointer?, CFNotificationName?, UnsafeRawPointer?, CFDictionary?) -> Void =
