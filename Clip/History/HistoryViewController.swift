@@ -283,7 +283,7 @@ private extension HistoryViewController
                 cell.locationButton.isHidden = true
             }
             
-            if indexPath.row < UserDefaults.shared.historyLimit.rawValue
+            if UserDefaults.shared.historyLimit.allows(row: indexPath.row)
             {
                 cell.bottomConstraint.isActive = true
             }
@@ -533,7 +533,7 @@ extension HistoryViewController
     {
         // It's far *far* easier to simply set row height to 0 for cells beyond history limit
         // than to actually limit fetched results to the correct number live (with insertions and deletions).
-        guard indexPath.row < UserDefaults.shared.historyLimit.rawValue else { return 0.0 }
+        guard UserDefaults.shared.historyLimit.allows(row: indexPath.row) else { return 0.0 }
         
         let item = self.dataSource.item(at: indexPath)
         

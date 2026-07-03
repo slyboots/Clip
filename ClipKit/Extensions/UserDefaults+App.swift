@@ -16,6 +16,16 @@ import Roxas
     case _25 = 25
     case _50 = 50
     case _100 = 100
+    case unlimited = 0
+}
+
+public extension HistoryLimit
+{
+    // Core Data treats fetchLimit == 0 as "no limit", so unlimited always allows every row.
+    func allows(row: Int) -> Bool
+    {
+        return self == .unlimited || row < self.rawValue
+    }
 }
 
 public extension UserDefaults
