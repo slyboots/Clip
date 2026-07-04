@@ -90,6 +90,27 @@ public struct Keyboard: View
                     .listRowSeparator(.hidden)
                     .listRowInsets(makeInsets())
                     .onAppear { self.clippingsLoader.loadMoreIfNeeded(currentItem: pasteboardItem) }
+                    .swipeActions(edge: .leading) {
+                        Button {
+                            self.copy(pasteboardItem)
+                        } label: {
+                            Label("Copy", systemImage: "doc.on.doc")
+                        }
+                        .tint(.blue)
+
+                        Button {
+                            self.share(pasteboardItem)
+                        } label: {
+                            Label("Share…", systemImage: "square.and.arrow.up")
+                        }
+                    }
+                    .swipeActions(edge: .trailing) {
+                        Button(role: .destructive) {
+                            self.delete(pasteboardItem)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
                 }
                 .padding(.top, 8) // iPadOS sometimes places List too close to toolbar, so add padding.
                 
@@ -159,7 +180,27 @@ private extension Keyboard
         let uuid = UUID().uuidString
         self.paste(uuid)
     }
-    
+
+    func copy(_ pasteboardItem: PasteboardItem)
+    {
+        UIPasteboard.general.copy(pasteboardItem)
+    }
+
+    func share(_ pasteboardItem: PasteboardItem)
+    {
+        guard let inputViewController = self.inputViewController else { return }
+
+        let activityViewController = UIActivityViewController(activityItems: [pasteboardItem], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = inputViewController.view
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: inputViewController.view.bounds.midX, y: inputViewController.view.bounds.midY, width: 0, height: 0)
+        inputViewController.present(activityViewController, animated: true, completion: nil)
+    }
+
+    func delete(_ pasteboardItem: PasteboardItem)
+    {
+        pasteboardItem.isMarkedForDeletion = true
+    }
+
     func paste(_ text: String)
     {
         self.inputViewController?.textDocumentProxy.insertText(text)

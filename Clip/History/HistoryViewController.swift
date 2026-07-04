@@ -570,6 +570,38 @@ extension HistoryViewController
     {
         self.showMenu(at: indexPath)
     }
+
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let copyAction = UIContextualAction(style: .normal, title: NSLocalizedString("Copy", comment: "")) { (action, view, completion) in
+            let item = self.dataSource.item(at: indexPath)
+            self.selectedItem = item
+            self.copy(action)
+            completion(true)
+        }
+        copyAction.backgroundColor = .systemBlue
+
+        let shareAction = UIContextualAction(style: .normal, title: NSLocalizedString("Share…", comment: "")) { (action, view, completion) in
+            let item = self.dataSource.item(at: indexPath)
+            self.selectedItem = item
+            self._share(action)
+            completion(true)
+        }
+
+        return UISwipeActionsConfiguration(actions: [copyAction, shareAction])
+    }
+
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let deleteAction = UIContextualAction(style: .destructive, title: NSLocalizedString("Delete", comment: "")) { (action, view, completion) in
+            let item = self.dataSource.item(at: indexPath)
+            self.selectedItem = item
+            self.delete(action)
+            completion(true)
+        }
+
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
 }
 
 extension HistoryViewController: UIPopoverPresentationControllerDelegate
