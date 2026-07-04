@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C96102D9BA5B8C7872524AC /* PaginatedClippingsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F41AB6F6108C57671EB520 /* PaginatedClippingsLoader.swift */; };
 		BF0BDE5122B4414A00E1419D /* UTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BDE5022B4414A00E1419D /* UTI.swift */; };
 		BF0BDE5622B456A600E1419D /* PasteboardItem+ActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BDE5522B456A600E1419D /* PasteboardItem+ActivityItemSource.swift */; };
 		BF0BDE5A22B4771300E1419D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BDE5922B4771300E1419D /* SettingsViewController.swift */; };
@@ -149,6 +150,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A7F41AB6F6108C57671EB520 /* PaginatedClippingsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedClippingsLoader.swift; sourceTree = "<group>"; };
 		BF0AB807247C5D1F0090B43B /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		BF0BDE5022B4414A00E1419D /* UTI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTI.swift; sourceTree = "<group>"; };
 		BF0BDE5522B456A600E1419D /* PasteboardItem+ActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PasteboardItem+ActivityItemSource.swift"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				BF7E6FF2247C518D0058F4D4 /* ClippingCell.swift */,
 				BFAD46CA249058DE00451D6F /* SwitchKeyboardButton.swift */,
 				BF0AB807247C5D1F0090B43B /* Blur.swift */,
+				A7F41AB6F6108C57671EB520 /* PaginatedClippingsLoader.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C96102D9BA5B8C7872524AC /* PaginatedClippingsLoader.swift in Sources */,
 				BFA2DF69247DD31500E31E4D /* UIColor+Clip.swift in Sources */,
 				BF0BDE5E22B47D4900E1419D /* UserDefaults+App.swift in Sources */,
 				BFC9E67C22B2CA4400974663 /* CFNotification+PasteboardListener.swift in Sources */,

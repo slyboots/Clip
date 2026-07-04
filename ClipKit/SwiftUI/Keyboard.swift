@@ -25,9 +25,8 @@ public struct Keyboard: View
     private let needsInputModeSwitchKey: Bool
     private let hasFullAccess: Bool
     
-    @FetchRequest(fetchRequest: PasteboardItem.historyFetchRequest())
-    private var pasteboardItems: FetchedResults<PasteboardItem>
-    
+    @StateObject private var clippingsLoader = PaginatedClippingsLoader()
+
     @Environment(\.horizontalSizeClass)
     private var horizontalSizeClass
     
@@ -68,7 +67,7 @@ public struct Keyboard: View
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 .padding()
             }
-            else if self.pasteboardItems.isEmpty
+            else if self.clippingsLoader.items.isEmpty
             {
                 VStack(spacing: 16) {
                     Text("No Clippings")
@@ -81,7 +80,7 @@ public struct Keyboard: View
             }
             else
             {
-                let list = List(self.pasteboardItems, id: \.objectID) { (pasteboardItem) in
+                let list = List(self.clippingsLoader.items, id: \.objectID) { (pasteboardItem) in
                     Button(action: { self.paste(pasteboardItem) }) {
                         ClippingCell(pasteboardItem: pasteboardItem)
                     }
@@ -90,6 +89,7 @@ public struct Keyboard: View
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
                     .listRowInsets(makeInsets())
+                    .onAppear { self.clippingsLoader.loadMoreIfNeeded(currentItem: pasteboardItem) }
                 }
                 .padding(.top, 8) // iPadOS sometimes places List too close to toolbar, so add padding.
                 
