@@ -91,13 +91,19 @@ public extension PasteboardItem
         return NSFetchRequest<PasteboardItem>(entityName: "PasteboardItem")
     }
     
-    class func historyFetchRequest() -> NSFetchRequest<PasteboardItem>
+    class func historyFetchRequest(limit: Int) -> NSFetchRequest<PasteboardItem>
     {
         let fetchRequest = PasteboardItem.fetchRequest() as NSFetchRequest<PasteboardItem>
         fetchRequest.predicate = NSPredicate(format: "%K == NO", #keyPath(PasteboardItem.isMarkedForDeletion))
         fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \PasteboardItem.date, ascending: false)]
-        fetchRequest.fetchLimit = UserDefaults.shared.historyLimit.rawValue
+        fetchRequest.fetchLimit = limit
+        fetchRequest.fetchBatchSize = limit > 0 ? min(limit, 50) : 50
         return fetchRequest
+    }
+
+    class func historyFetchRequest() -> NSFetchRequest<PasteboardItem>
+    {
+        return historyFetchRequest(limit: UserDefaults.shared.historyLimit.rawValue)
     }
 }
 
