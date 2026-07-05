@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		688C7F55691C2B49DC7189C7 /* ClippingIntentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D0C86520F63CD97262D21D /* ClippingIntentError.swift */; };
+		E0BF8EDFAD7C99FEC3CFED88 /* DatabaseManager+Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41C836012DEDC291496133 /* DatabaseManager+Intents.swift */; };
+		AD1206DEADE05472BC4DD755 /* ClippingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B0150501FD8776D34FEFD /* ClippingEntity.swift */; };
+		FA138DABD7B73BBE67F5846B /* GetClippingIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6980DFD6252F0ED944F7A0AE /* GetClippingIntent.swift */; };
+		A7CFC7972B9EB57A84305DE1 /* AddClippingIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95884E9F33721991359DEBF /* AddClippingIntent.swift */; };
+		48B8F1AF692ECFF57E67E0B3 /* DeleteClippingIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F6623A0E82C742E315CEB1 /* DeleteClippingIntent.swift */; };
+		B0C34213F0873448D3FD61C5 /* DeleteAllClippingsIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121B88F21971F5352368CB7A /* DeleteAllClippingsIntent.swift */; };
+		3ED0EAA17677576B12707B8D /* ClipShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811AB9EED3DD4671D33D250F /* ClipShortcuts.swift */; };
 		3C96102D9BA5B8C7872524AC /* PaginatedClippingsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F41AB6F6108C57671EB520 /* PaginatedClippingsLoader.swift */; };
 		BF0BDE5122B4414A00E1419D /* UTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BDE5022B4414A00E1419D /* UTI.swift */; };
 		BF0BDE5622B456A600E1419D /* PasteboardItem+ActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BDE5522B456A600E1419D /* PasteboardItem+ActivityItemSource.swift */; };
@@ -150,6 +158,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03D0C86520F63CD97262D21D /* ClippingIntentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClippingIntentError.swift; sourceTree = "<group>"; };
+		1E41C836012DEDC291496133 /* DatabaseManager+Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseManager+Intents.swift"; sourceTree = "<group>"; };
+		764B0150501FD8776D34FEFD /* ClippingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClippingEntity.swift; sourceTree = "<group>"; };
+		6980DFD6252F0ED944F7A0AE /* GetClippingIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClippingIntent.swift; sourceTree = "<group>"; };
+		D95884E9F33721991359DEBF /* AddClippingIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClippingIntent.swift; sourceTree = "<group>"; };
+		95F6623A0E82C742E315CEB1 /* DeleteClippingIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteClippingIntent.swift; sourceTree = "<group>"; };
+		121B88F21971F5352368CB7A /* DeleteAllClippingsIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllClippingsIntent.swift; sourceTree = "<group>"; };
+		811AB9EED3DD4671D33D250F /* ClipShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipShortcuts.swift; sourceTree = "<group>"; };
 		A7F41AB6F6108C57671EB520 /* PaginatedClippingsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedClippingsLoader.swift; sourceTree = "<group>"; };
 		BF0AB807247C5D1F0090B43B /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		BF0BDE5022B4414A00E1419D /* UTI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTI.swift; sourceTree = "<group>"; };
@@ -361,6 +377,21 @@
 			path = History;
 			sourceTree = "<group>";
 		};
+		96FE2B8DB6D58BCBC53EA468 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				6980DFD6252F0ED944F7A0AE /* GetClippingIntent.swift */,
+				D95884E9F33721991359DEBF /* AddClippingIntent.swift */,
+				95F6623A0E82C742E315CEB1 /* DeleteClippingIntent.swift */,
+				121B88F21971F5352368CB7A /* DeleteAllClippingsIntent.swift */,
+				764B0150501FD8776D34FEFD /* ClippingEntity.swift */,
+				03D0C86520F63CD97262D21D /* ClippingIntentError.swift */,
+				811AB9EED3DD4671D33D250F /* ClipShortcuts.swift */,
+				1E41C836012DEDC291496133 /* DatabaseManager+Intents.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
 		BFAD2C48257AD4CB00FF9532 /* Types */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +444,7 @@
 				BFA714B922C53F1700EE7236 /* ApplicationMonitor.swift */,
 				BFC1F3A022AF0D0E003AC21A /* Main.storyboard */,
 				BFAC49D722B2EF170011E7C4 /* History */,
+				96FE2B8DB6D58BCBC53EA468 /* Intents */,
 				D53442912BAB202A00E133EE /* Map View */,
 				BF0BDE6622B4871400E1419D /* Settings */,
 				BF1D5D4122B083210062F474 /* Pasteboard */,
@@ -720,6 +752,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA138DABD7B73BBE67F5846B /* GetClippingIntent.swift in Sources */,
+				A7CFC7972B9EB57A84305DE1 /* AddClippingIntent.swift in Sources */,
+				48B8F1AF692ECFF57E67E0B3 /* DeleteClippingIntent.swift in Sources */,
+				B0C34213F0873448D3FD61C5 /* DeleteAllClippingsIntent.swift in Sources */,
+				AD1206DEADE05472BC4DD755 /* ClippingEntity.swift in Sources */,
+				688C7F55691C2B49DC7189C7 /* ClippingIntentError.swift in Sources */,
+				3ED0EAA17677576B12707B8D /* ClipShortcuts.swift in Sources */,
+				E0BF8EDFAD7C99FEC3CFED88 /* DatabaseManager+Intents.swift in Sources */,
 				BF1D5C7F22B02BF30062F474 /* PasteboardMonitor.swift in Sources */,
 				BFA714BA22C53F1700EE7236 /* ApplicationMonitor.swift in Sources */,
 				BFDB5B1E22EF7B5000F74113 /* GradientView.swift in Sources */,
