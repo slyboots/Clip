@@ -236,6 +236,12 @@ public extension PasteboardItemRepresentation
     var dataValue: Data? {
         return self.data
     }
+
+    func updateText(_ text: String)
+    {
+        guard self.type == .text else { return }
+        self.string = text
+    }
     
     var attributedStringValue: NSAttributedString? {
         let type: NSAttributedString.DocumentType
