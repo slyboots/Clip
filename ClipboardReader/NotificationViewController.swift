@@ -48,6 +48,12 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
             self.extensionContext?.dismissNotificationContentExtension()
             return
         }
+
+        if let hasSupportedContent = notification.request.content.userInfo[UNNotification.hasSupportedContentUserInfoKey] as? Bool, !hasSupportedContent {
+            // Debug-mode metadata notification for an unsupported item; there's nothing to save.
+            self.activityIndicatorView.stopAnimating()
+            return
+        }
         
         if let error = self.databaseError
         {
