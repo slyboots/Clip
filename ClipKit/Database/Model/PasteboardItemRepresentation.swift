@@ -31,6 +31,18 @@ extension PasteboardItemRepresentation
     }
 }
 
+public extension PasteboardItemRepresentation
+{
+    // Type identifiers Clip knows how to save, grouped by the representation they map to.
+    static let supportedTextTypeIdentifiers: [String] = [kUTTypeUTF8PlainText, kUTTypePlainText, kUTTypeText].map { $0 as String }
+    static let supportedAttributedTextTypeIdentifiers: [String] = [kUTTypeRTF, kUTTypeHTML, kUTTypeFlatRTFD, kUTTypeRTFD].map { $0 as String }
+    static let supportedImageTypeIdentifiers: [String] = [kUTTypePNG, kUTTypeJPEG, kUTTypeImage].map { $0 as String }
+    static let supportedURLTypeIdentifiers: [String] = [kUTTypeFileURL, kUTTypeURL].map { $0 as String }
+
+    // The union of every type identifier Clip can turn into a representation.
+    static let supportedTypeIdentifiers: [String] = supportedTextTypeIdentifiers + supportedAttributedTextTypeIdentifiers + supportedImageTypeIdentifiers + supportedURLTypeIdentifiers
+}
+
 @objc(PasteboardItemRepresentation)
 public class PasteboardItemRepresentation: NSManagedObject
 {
@@ -82,73 +94,69 @@ public class PasteboardItemRepresentation: NSManagedObject
         
         let dispatchGroup = DispatchGroup()
         
-        let supportedTextUTIs = [kUTTypeUTF8PlainText, kUTTypePlainText, kUTTypeText]
-        if let uti = supportedTextUTIs.first(where: { itemProvider.hasItemConformingToTypeIdentifier($0 as String) }), itemProvider.canLoadObject(ofClass: NSString.self)
+        if let uti = supportedTextTypeIdentifiers.first(where: { itemProvider.hasItemConformingToTypeIdentifier($0) }), itemProvider.canLoadObject(ofClass: NSString.self)
         {
             dispatchGroup.enter()
-            
+
             itemProvider.loadObject(ofClass: NSString.self) { (text, error) in
                 context.perform {
                     switch Result(text, error)
                     {
                     case .failure(let error): print(error)
                     case .success(let text):
-                        let representation = PasteboardItemRepresentation(uti: uti as String, text: text as! String, context: context)
+                        let representation = PasteboardItemRepresentation(uti: uti, text: text as! String, context: context)
                         representations.append(representation)
                     }
-                    
+
                     dispatchGroup.leave()
                 }
             }
         }
-        
-        let supportedAttributedTextUTIs = [kUTTypeRTF, kUTTypeHTML, kUTTypeFlatRTFD, kUTTypeRTFD]
-        if let uti = supportedAttributedTextUTIs.first(where: { itemProvider.hasItemConformingToTypeIdentifier($0 as String) }), itemProvider.canLoadObject(ofClass: NSAttributedString.self)
+
+        if let uti = supportedAttributedTextTypeIdentifiers.first(where: { itemProvider.hasItemConformingToTypeIdentifier($0) }), itemProvider.canLoadObject(ofClass: NSAttributedString.self)
         {
             dispatchGroup.enter()
-            
-            itemProvider.loadDataRepresentation(forTypeIdentifier: uti as String) { (data, error) in
+
+            itemProvider.loadDataRepresentation(forTypeIdentifier: uti) { (data, error) in
                 context.perform {
                     switch Result(data, error)
                     {
                     case .failure(let error): print(error)
                     case .success(let data):
-                        let representation = PasteboardItemRepresentation(uti: uti as String, data: data, type: .attributedText, context: context)
+                        let representation = PasteboardItemRepresentation(uti: uti, data: data, type: .attributedText, context: context)
                         representations.append(representation)
                     }
-                    
+
                     dispatchGroup.leave()
                 }
             }
         }
-        
-        let supportedImageUTIs = [kUTTypePNG, kUTTypeJPEG, kUTTypeImage]
-        if let uti = supportedImageUTIs.first(where: { itemProvider.hasItemConformingToTypeIdentifier($0 as String) }), itemProvider.canLoadObject(ofClass: UIImage.self)
+
+        if let uti = supportedImageTypeIdentifiers.first(where: { itemProvider.hasItemConformingToTypeIdentifier($0) }), itemProvider.canLoadObject(ofClass: UIImage.self)
         {
             dispatchGroup.enter()
-            
-            itemProvider.loadDataRepresentation(forTypeIdentifier: uti as String) { (data, error) in
+
+            itemProvider.loadDataRepresentation(forTypeIdentifier: uti) { (data, error) in
                 context.perform {
                     switch Result(data, error)
                     {
                     case .failure(let error): print(error)
                     case .success(let data):
                         guard data.count <= UserDefaults.shared.maximumClippingSize else { break }
-                        
-                        let representation = PasteboardItemRepresentation(uti: uti as String, data: data, type: .image, context: context)
+
+                        let representation = PasteboardItemRepresentation(uti: uti, data: data, type: .image, context: context)
                         representations.append(representation)
                     }
-                    
+
                     dispatchGroup.leave()
                 }
             }
         }
-        
-        let supportedURLUTIs = [kUTTypeFileURL, kUTTypeURL]
-        if let uti = supportedURLUTIs.first(where: { itemProvider.hasItemConformingToTypeIdentifier($0 as String) }), itemProvider.canLoadObject(ofClass: NSURL.self)
+
+        if let uti = supportedURLTypeIdentifiers.first(where: { itemProvider.hasItemConformingToTypeIdentifier($0) }), itemProvider.canLoadObject(ofClass: NSURL.self)
         {
             dispatchGroup.enter()
-            
+
             itemProvider.loadObject(ofClass: NSURL.self) { (url, error) in
                 context.perform {
                     switch Result(url, error)
@@ -156,14 +164,14 @@ public class PasteboardItemRepresentation: NSManagedObject
                     case .failure(let error as NSError) where error.domain == NSItemProvider.errorDomain && error.code == NSItemProvider.ErrorCode.unavailableCoercionError.rawValue:
                         // Ignore, corrupted data.
                         break
-                        
+
                     case .failure(let error): print("Failed to load URL.", error)
-                        
+
                     case .success(let url):
-                        let representation = PasteboardItemRepresentation(uti: uti as String, url: url as! URL, context: context)
+                        let representation = PasteboardItemRepresentation(uti: uti, url: url as! URL, context: context)
                         representations.append(representation)
                     }
-                    
+
                     dispatchGroup.leave()
                 }
             }
