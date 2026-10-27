@@ -11,6 +11,7 @@
 		BF0BDE5122B4414A00E1419D /* UTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BDE5022B4414A00E1419D /* UTI.swift */; };
 		BF0BDE5622B456A600E1419D /* PasteboardItem+ActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BDE5522B456A600E1419D /* PasteboardItem+ActivityItemSource.swift */; };
 		BF0BDE5A22B4771300E1419D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BDE5922B4771300E1419D /* SettingsViewController.swift */; };
+		CB0BDE0000000000000000A1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0BDE0000000000000000A2 /* SettingsView.swift */; };
 		BF0BDE5E22B47D4900E1419D /* UserDefaults+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BDE5722B4757100E1419D /* UserDefaults+App.swift */; };
 		BF1D5C7A22B029E70062F474 /* Roxas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1D5C7522B029DC0062F474 /* Roxas.framework */; platformFilter = ios; };
 		BF1D5C7B22B029E70062F474 /* Roxas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF1D5C7522B029DC0062F474 /* Roxas.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -156,6 +157,7 @@
 		BF0BDE5522B456A600E1419D /* PasteboardItem+ActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PasteboardItem+ActivityItemSource.swift"; sourceTree = "<group>"; };
 		BF0BDE5722B4757100E1419D /* UserDefaults+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+App.swift"; sourceTree = "<group>"; };
 		BF0BDE5922B4771300E1419D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CB0BDE0000000000000000A2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BF1D5C6E22B029DB0062F474 /* Roxas.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Roxas.xcodeproj; path = Dependencies/Roxas/Roxas.xcodeproj; sourceTree = "<group>"; };
 		BF1D5C7E22B02BF30062F474 /* PasteboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardMonitor.swift; sourceTree = "<group>"; };
 		BF1D5D4422B0867C0062F474 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				BF0BDE5922B4771300E1419D /* SettingsViewController.swift */,
+				CB0BDE0000000000000000A2 /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 				BFAC49D522B2EDB20011E7C4 /* ClippingTableViewCell.swift in Sources */,
 				BFAD2C4A257AD4D600FF9532 /* PublishedPipeline.swift in Sources */,
 				BF0BDE5A22B4771300E1419D /* SettingsViewController.swift in Sources */,
+				CB0BDE0000000000000000A1 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
