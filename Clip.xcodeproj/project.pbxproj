@@ -50,6 +50,7 @@
 		BFC177082399BC4F0058AC51 /* ClipboardReader.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BFC176FC2399BC4F0058AC51 /* ClipboardReader.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BFC1F39D22AF0D0E003AC21A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1F39C22AF0D0E003AC21A /* AppDelegate.swift */; };
 		BFC1F39F22AF0D0E003AC21A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1F39E22AF0D0E003AC21A /* HistoryViewController.swift */; };
+		1F5FD5126C1B4506BE0DB3C5 /* ClippingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C902AC52BFF54909B42EF1F3 /* ClippingDetailView.swift */; };
 		BFC1F3A222AF0D0E003AC21A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFC1F3A022AF0D0E003AC21A /* Main.storyboard */; };
 		BFC1F3A422AF0D0F003AC21A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFC1F3A322AF0D0F003AC21A /* Assets.xcassets */; };
 		BFC1F3A722AF0D0F003AC21A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFC1F3A522AF0D0F003AC21A /* LaunchScreen.storyboard */; };
@@ -209,6 +210,7 @@
 		BFC1F39922AF0D0E003AC21A /* Clip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC1F39C22AF0D0E003AC21A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFC1F39E22AF0D0E003AC21A /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		C902AC52BFF54909B42EF1F3 /* ClippingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClippingDetailView.swift; sourceTree = "<group>"; };
 		BFC1F3A122AF0D0E003AC21A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFC1F3A322AF0D0F003AC21A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFC1F3A622AF0D0F003AC21A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				BFC1F39E22AF0D0E003AC21A /* HistoryViewController.swift */,
+				C902AC52BFF54909B42EF1F3 /* ClippingDetailView.swift */,
 				BFAC49D422B2EDB20011E7C4 /* ClippingTableViewCell.swift */,
 				BFAC49D222B2EDA80011E7C4 /* ClippingTableViewCell.xib */,
 			);
@@ -764,6 +767,7 @@
 				BFA714BA22C53F1700EE7236 /* ApplicationMonitor.swift in Sources */,
 				BFDB5B1E22EF7B5000F74113 /* GradientView.swift in Sources */,
 				BFC1F39F22AF0D0E003AC21A /* HistoryViewController.swift in Sources */,
+				1F5FD5126C1B4506BE0DB3C5 /* ClippingDetailView.swift in Sources */,
 				BFF9E4932555F4F40052B1B2 /* LocationManager.swift in Sources */,
 				D5D375152BAB330200213D84 /* ClippingSheet.swift in Sources */,
 				BF8F76F3254CC0E0005AF18B /* SceneDelegate.swift in Sources */,
