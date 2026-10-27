@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import MobileCoreServices
 import Combine
 import CoreLocation
@@ -370,21 +371,6 @@ private extension HistoryViewController
         }
     }
     
-    func showMenu(at indexPath: IndexPath)
-    {
-        guard let cell = self.tableView.cellForRow(at: indexPath) as? ClippingTableViewCell else { return }
-        
-        let item = self.dataSource.item(at: indexPath)
-        self.selectedItem = item
-        
-        let targetRect = cell.clippingView.frame
-        
-        self.becomeFirstResponder()
-        
-        UIMenuController.shared.setTargetRect(targetRect, in: cell)
-        UIMenuController.shared.setMenuVisible(true, animated: true)
-    }
-    
     @objc func showLocation(_ sender: UIButton)
     {
         let point = self.view.convert(sender.center, from: sender.superview!)
@@ -571,7 +557,13 @@ extension HistoryViewController
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        self.showMenu(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let item = self.dataSource.item(at: indexPath)
+        let detailView = ClippingDetailView(pasteboardItem: item)
+
+        let hostingController = UIHostingController(rootView: detailView)
+        self.navigationController?.pushViewController(hostingController, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?

@@ -108,7 +108,7 @@ public extension PasteboardItem
 }
 
 // SwiftUI
-extension PasteboardItem
+public extension PasteboardItem
 {
     class func make(item: NSItemProviderWriting, date: Date = Date(), context: NSManagedObjectContext) -> PasteboardItem
     {
